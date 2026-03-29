@@ -8,3 +8,4 @@ pydantic
 pandas
 pytest
 httpx
+evidently==0.4.30
