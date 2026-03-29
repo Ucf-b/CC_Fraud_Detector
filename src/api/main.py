@@ -5,6 +5,8 @@ import joblib
 import uvicorn
 from pathlib import Path
 import pandas as pd
+from xgboost import XGBClassifier
+import json
 
 app = FastAPI(
     title="Credit Card Fraud Detection API",
@@ -13,11 +15,12 @@ app = FastAPI(
 )
 
 # Charger le modèle au démarrage
-MODEL_PATH = Path("models/xgboost_fraud_best.pkl")
-THRESHOLD_PATH = Path("models/threshold_best.pkl")
+# Remplace joblib.load par ça
+model = XGBClassifier()
+model.load_model("models/xgboost_fraud_best.json")
 
-model = joblib.load(MODEL_PATH)
-threshold = joblib.load(THRESHOLD_PATH)
+with open("models/threshold_best.json") as f:
+    threshold = json.load(f)["threshold"]
 
 class Transaction(BaseModel):
     Time: float = Field(..., ge=0)
