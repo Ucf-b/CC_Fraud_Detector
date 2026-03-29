@@ -2,10 +2,11 @@ numpy
 matplotlib
 pandas
 seaborn
-sklearn
+scikit-learn
 xgboost
 lightgbm
 joblib
 shap
 json
 mlflow
+dvc
