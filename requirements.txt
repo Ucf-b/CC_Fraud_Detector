@@ -1,0 +1,11 @@
+numpy
+matplotlib
+pandas
+seaborn
+sklearn
+xgboost
+lightgbm
+joblib
+shap
+json
+mlflow
