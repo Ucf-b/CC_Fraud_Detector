@@ -20,14 +20,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Download model from Kaggle
-        env:
-          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
-        run: |
-          pip install kaggle
-          mkdir -p models
-          kaggle kernels output youssefibnseddik/fraud-comp-node -p models/
+      - name: Run tests
+        run: pytest tests/ -v
 
   docker:
     needs: test
